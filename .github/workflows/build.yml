@@ -16,12 +16,13 @@ jobs:
         distribution: 'temurin'
     - name: Configurer Gradle
       uses: gradle/actions/setup-gradle@v4
-    - name: Générer le wrapper Gradle
-      run: gradle wrapper --gradle-version 8.4
+      with:
+        gradle-version: '8.4'
     - name: Construire l'APK
-      run: ./gradlew assembleDebug --stacktrace
+      run: gradle assembleDebug --stacktrace
     - name: Sauvegarder l'APK
       uses: actions/upload-artifact@v4
       with:
         name: EnChemin-APK
         path: app/build/outputs/apk/debug/app-debug.apk
+        
