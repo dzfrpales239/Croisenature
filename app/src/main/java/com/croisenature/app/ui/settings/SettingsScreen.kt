@@ -42,7 +42,6 @@ fun SettingsScreen(
                 .padding(16.dp)
                 .fillMaxSize()
         ) {
-            // SECTION THEME
             Text("🎨 Thème de l'application", style = MaterialTheme.typography.titleMedium)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 RadioButton(selected = currentTheme == "nature", onClick = { scope.launch { userPreferences.setTheme("nature") } })
@@ -55,9 +54,8 @@ fun SettingsScreen(
                 Text("Clair")
             }
             
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
 
-            // SECTION TAILLE PHOTO
             Text("📷 Taille des photos sur la carte", style = MaterialTheme.typography.titleMedium)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 RadioButton(selected = currentSize == "petite", onClick = { scope.launch { userPreferences.setMarkerSize("petite") } })
@@ -70,9 +68,8 @@ fun SettingsScreen(
                 Text("Grande")
             }
 
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
 
-            // SECTION FORME PHOTO
             Text("🖼️ Forme des photos", style = MaterialTheme.typography.titleMedium)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 RadioButton(selected = currentShape == "ronde", onClick = { scope.launch { userPreferences.setPhotoShape("ronde") } })
@@ -85,9 +82,8 @@ fun SettingsScreen(
                 Text("Arrondie")
             }
 
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
 
-            // SECTION NOMBRE DE LIGNES
             Text("🏷️ Nom de l'animal (lignes)", style = MaterialTheme.typography.titleMedium)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 RadioButton(selected = currentLines == "1", onClick = { scope.launch { userPreferences.setNameLines("1") } })
@@ -97,9 +93,8 @@ fun SettingsScreen(
                 Text("2 lignes")
             }
 
-            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+            Divider(modifier = Modifier.padding(vertical = 16.dp))
 
-            // SECTION ANIMATION
             Text("✨ Animations", style = MaterialTheme.typography.titleMedium)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
@@ -111,7 +106,6 @@ fun SettingsScreen(
 
             Spacer(Modifier.weight(1f))
 
-            // BOUTON RESET
             Button(
                 onClick = { scope.launch { userPreferences.resetToNature() } },
                 modifier = Modifier.fillMaxWidth()
