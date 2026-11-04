@@ -1,4 +1,4 @@
-package com.croisenature.app.utils 
+package com.croisenature.app.utils
 
 import android.content.Context
 import android.graphics.Canvas
@@ -16,7 +16,7 @@ import com.croisenature.app.R
 class AnimalMarker(
     private val context: Context,
     mapView: MapView,
-    private val photoUrl: String, // L'URL ou le chemin de la photo
+    private val photoUrl: String,
     private val animalName: String,
     lat: Double,
     lon: Double,
@@ -31,20 +31,15 @@ class AnimalMarker(
             val imageView = findViewById<ImageView>(R.id.markerImage)
             val textView = findViewById<TextView>(R.id.markerName)
 
-            // Appliquer la taille choisie dans les réglages
             val sizeDp = when(size) {
                 "petite" -> 48
                 "grande" -> 80
                 else -> 64
             }
             
-            // Appliquer le nombre de lignes
             textView.maxLines = if (lines == "2") 2 else 1
-            
-            // Écrire le nom
             textView.text = animalName
 
-            // Charger la photo avec Coil
             Coil.imageLoader(context).enqueue(
                 ImageRequest.Builder(context)
                     .data(photoUrl)
@@ -55,7 +50,7 @@ class AnimalMarker(
 
     init {
         position = GeoPoint(lat, lon)
-        anchor = ANCHOR_CENTER to ANCHOR_BOTTOM
+        setAnchor(ANCHOR_CENTER, ANCHOR_BOTTOM)
     }
 
     override fun draw(c: Canvas, mapView: MapView, shadow: Boolean) {
